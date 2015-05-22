@@ -35,12 +35,5 @@ class WrapMapConfig(object):
         }, { 
         'name': 'HTTPScanner' # second module for same port, no options
         }
-    ],
-    'tcp_443,https,HTTPS': [ {
-        'name': 'DirBuster',
-        'options': {
-            'SSL': True
-            } 
-        }
     ]
 }
