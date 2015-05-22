@@ -2,10 +2,6 @@
 from WrapMapModule import WrapMapModule
 import subprocess
 
-# OPTIONS
-# SSL: Boolean: Use SSL for dirb scan (optional)
-# WORDLIST: String: Wordlist for dirb scan (optional)
-
 # DirBuster class to enumerate HTTP Servers
 class DirBuster(WrapMapModule):
         
@@ -17,7 +13,6 @@ class DirBuster(WrapMapModule):
         dirb_cmd = ""
         
         print "+ Starting dirb scan against %s on port %s" % (host, port)
-		print "+ SSL: %s" % (self.options['SSL'])
         
         if self.options != None and 'SSL' in self.options.keys() and self.options['SSL'] == True:
             dirb_cmd = "dirb https://%s:%s" % (host, port)
