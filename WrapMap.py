@@ -118,11 +118,18 @@ class WrapMap(object):
         
     # Callback method for completed nmap scans
     def nmapScanComplete(self, host, scan_result):
-        host_result = scan_result['scan'][host]
-        
         print "\n"
         print "+ Finished nmap scan for %s" % (host)
         print "+ Command was: %s" % (scan_result['nmap']['command_line'])
+        
+        # validate nmap result
+        if scan_result['scan']:
+            # host exists
+            host_result = scan_result['scan'][host]
+        else:
+            # host does not exist or ist down. scan_result['scan'][host].state() is not reliable
+            print "- ERROR Host %s is down or does not exist." % (host)
+            return
                 
         print "+ Host : %s (%s)" % (host, host_result.hostname())
         print "+ State : %s" % (host_result.state())
