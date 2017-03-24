@@ -113,7 +113,7 @@ class PortScanner(object):
         self.__process = None
 
         # regex used to detect nmap
-        regex = re.compile('Nmap version [0-9]*\.[0-9]*[^ ]* \( http://nmap\.org \)')
+        regex = re.compile('Nmap version [0-9]*\.[0-9]*[^ ]* \( https?://nmap\.org \)')
         # launch 'nmap -V', we wait after 'Nmap version 5.0 ( http://nmap.org )'
         p = subprocess.Popen(['nmap', '-V'], bufsize=10000, stdout=subprocess.PIPE)
         self._nmap_last_output = p.communicate()[0] # store stdout
